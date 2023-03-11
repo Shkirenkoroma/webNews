@@ -12,6 +12,8 @@ export interface IState {
 	posts: any[];
 	comments: any[];
 	loading: boolean;
+	postError:string;
+	commentError:string,
 }
 
 export interface IPostsType {
@@ -23,11 +25,12 @@ export interface IPostsType {
 	title: string;
 	type: string;
 	url: string;
-	kids:number[]
+	kids:number[];
 }
 
 export interface IPostsData {
 	items: IPostsType[],
+	error?:stringLine,
 }
 
 

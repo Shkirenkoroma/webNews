@@ -9,10 +9,10 @@ import { IState } from "types";
 
 export const MainPage:FC = ():JSX.Element => {
 	const dispatch = useDispatch();
-	const state = useSelector((state:IState) => state);
-	const loading = state.loading;
-	const posts = state.posts;
-console.log('posts', posts)
+	const loading = useSelector((state:IState) => state?.loading);
+	const posts = useSelector((state:IState) => state?.posts);
+	const errorPosts = useSelector((state:IState) => state?.postError);
+
 	useEffect(() => {
 		dispatch({ type: GET_POSTS });
 	}, []);
@@ -27,7 +27,7 @@ console.log('posts', posts)
 				<Loader />
 			) : (
 				<S.Div>
-					<NewsList items={posts} />
+					<NewsList items={posts} error={errorPosts}/>
 				</S.Div>
 			)}
 		</div>

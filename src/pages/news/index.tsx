@@ -6,6 +6,7 @@ import Button from "components/Button";
 import Comments from "components/Comments";
 import { GET_COMMENTS } from "redux/action/types";
 import * as S from "./index.styles";
+import { getTime } from "utils";
 
 
 export const NewsPage:FC = ():JSX.Element => {
@@ -29,7 +30,7 @@ export const NewsPage:FC = ():JSX.Element => {
 				<div className="groupTitle">
 					<span>
 						<b>Дата:</b>
-						{time}
+						{getTime(time)}
 					</span>
 					<span>
 						<b>Автор:</b>

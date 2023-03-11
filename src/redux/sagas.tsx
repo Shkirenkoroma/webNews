@@ -5,20 +5,24 @@ import {
 	GET_POSTS,
 	HIDE_LOADER,
 	SET_LOADING,
-	SET_POSTS
+	SET_POSTS,
+	SET_ERRORS_POSTS, 
+	SET_ERRORS_COMMENTS
 } from "./action/types";
-import { fetchComments, fetchPosts } from "common/api/helpers";
+import { getComments, getPosts } from "common/api/helpers";
 import { ICommentsType, IPostsType } from "types";
 
 function* sagaWorkerPosts() {
 	try {
 		yield put({ type: SET_LOADING });
-		const payload: IPostsType = yield call(fetchPosts);
+		const payload: IPostsType = yield call(getPosts);
 		yield put({ type: SET_POSTS, payload });
 		yield put({ type: HIDE_LOADER });
-	} catch (e) {
-
-	}
+	} catch {
+	yield put({type:SET_ERRORS_POSTS, payload:'Произошла ошибка загрузки новостей...'})
+	yield put({ type: HIDE_LOADER });
+	console.log('Произошла ошибка загрузки новостей...')
+}
 }
 
 function* sagaGetPosts() {
@@ -28,10 +32,12 @@ function* sagaGetPosts() {
 function* sagaWorkerComments() {
 	try {
 		const { kids } = yield select((state) => state.post);
-		const payload: ICommentsType = yield call(fetchComments, kids);
+		const payload: ICommentsType = yield call(getComments, kids);
 		yield put({ type: SET_COMMENTS, payload });
-		yield put({ type: HIDE_LOADER });
-	} catch (e) {}
+	} catch  {
+		yield put({type:SET_ERRORS_COMMENTS, payload:'Произошла ошибка загрузки комментариев'})
+		console.log('Произошла ошибка загрузки комментариев')
+	}
 }
 function* sagaGetComments() {
 	yield takeLatest(GET_COMMENTS, sagaWorkerComments);

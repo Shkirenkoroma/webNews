@@ -5,6 +5,8 @@ import { GET_POST } from "redux/action/types";
 import * as S from "./index.styles.jsx";
 import Button from "../Button";
 import { IPost } from 'types/index';
+import { getTime } from "utils";
+
 
  const NewsItem:FC<IPost> = ({ post }):JSX.Element => {
 	const dispatch = useDispatch();
@@ -15,7 +17,7 @@ import { IPost } from 'types/index';
 			<h3>{title}</h3>
 			<p>Рейтинг: {score}</p>
 			<p>Автор: {by}</p>
-			<p>Опубликовано: {time}</p>
+			<p>Опубликовано: {getTime(time)}</p>
 			<p className="espessial">Комментариев: {kids ? kids.length : 0}<Link
 				to={`/news/${id}`}
 				onClick={() => dispatch({ type: GET_POST, payload: post })}

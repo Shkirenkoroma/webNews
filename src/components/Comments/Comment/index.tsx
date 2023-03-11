@@ -1,9 +1,11 @@
 import * as S from "./index.styles";
 import { FC } from 'react';
 import { RotatingTriangles } from "react-loader-spinner";
-import { ICommentData } from "types";
+import { ICommentData, IState } from "types";
+import { useSelector } from "react-redux";
 
 const Comment:FC<ICommentData> = ({ item }):JSX.Element => {
+	const errorComments = useSelector((state:IState) => state?.commentError)
 	
 	return (
 		<S.ContainerComment>
@@ -19,7 +21,7 @@ const Comment:FC<ICommentData> = ({ item }):JSX.Element => {
 					</div>
 					<div>
 						<span>Комментарий:</span>
-						<span className="comment">{item.text}</span>
+						<span className="comment">{item.text ? (item.text) : (errorComments)}</span>
 					</div>
 				</div>
 			) : (
