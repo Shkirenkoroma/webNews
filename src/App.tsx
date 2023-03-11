@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter,Routes,Route} from 'react-router-dom';
+import  { FC } from 'react';
+import Header from './components/Header';
+import {useSelector} from "react-redux"
+import { MainPage } from './pages/main';
+import { NewsPage } from './pages/news';
+import { IState } from 'types';
 
-function App() {
+const  App:FC = ():JSX.Element => {
+  const url = useSelector((state:IState)=>state.post.id);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+    <Header />
+    <Routes>
+      <Route  path='/*' element={<MainPage/>} />
+      <Route  path={`/news/${url}`}   element={<NewsPage/>} />
+    </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
