@@ -1,26 +1,26 @@
 import { FC, useEffect } from "react";
 import NewsList from "components/NewsList";
 import { useDispatch, useSelector } from "react-redux";
-import { GET_POSTS } from "redux/action/types";
 import * as S from "./index.styles";
 import Loader from "components/Loader";
 import { IState } from "types";
-
+import { useActions } from "redux/hooks";
 
 export const MainPage:FC = ():JSX.Element => {
 	const dispatch = useDispatch();
-	const loading = useSelector((state:IState) => state?.loading);
-	const posts = useSelector((state:IState) => state?.posts);
-	const errorPosts = useSelector((state:IState) => state?.postError);
+	const loading = useSelector((state:IState) => state.news.loading);
+	const posts = useSelector((state:IState) => state.news.posts);
+	const errorPosts = useSelector((state:IState) => state?.news.postError);
+	const { getPosts }  = useActions();
 
 	useEffect(() => {
-		dispatch({ type: GET_POSTS });
+		dispatch(getPosts());
 	}, []);
 
-	// setInterval(()=>{
-	// 	dispatch({ type: FETCH_POSTS })
-	// }, 60000)
-	
+	setInterval(()=>{
+		dispatch(getPosts())
+	}, 60000);
+
 	return (
 		<div>
 			{loading ? (

@@ -13,5 +13,4 @@ align-items: center;
         width:245px;
         height:185px;
     }
-   
 `

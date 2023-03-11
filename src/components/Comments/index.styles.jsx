@@ -12,5 +12,6 @@ export const ContainerComments = styled.div`
 		flex-direction: column;
 	}
 	.nocomments{
-		margin:0 auto	}
+		margin:0 auto;
+		}
 `;

@@ -2,18 +2,18 @@ export type stringLine = string;
 export type numberLine = number;
 
 export interface IButtonProps {
-	updatePosts?: () => void;
+	onClick?: () => void;
 	buttonName: string;
 	className?: string;
 }
 
 export interface IState {
-	post: any;
+	news:{post: any;
 	posts: any[];
 	comments: any[];
 	loading: boolean;
 	postError:string;
-	commentError:string,
+	commentError:string}
 }
 
 export interface IPostsType {

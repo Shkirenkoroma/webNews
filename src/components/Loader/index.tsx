@@ -2,7 +2,6 @@ import * as S from "./index.styles";
 import { Triangle } from  'react-loader-spinner';
 import { FC } from "react";
 
-
 const Loader:FC = ():JSX.Element => {
 
 	return (

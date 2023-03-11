@@ -4,20 +4,18 @@ import { Link } from "react-router-dom";
 import { IState } from "types";
 import Button from "components/Button";
 import Comments from "components/Comments";
-import { GET_COMMENTS } from "redux/action/types";
 import * as S from "./index.styles";
 import { getTime } from "utils";
+import { getComments } from "redux/reducer/newsSlice";
 
-
-export const NewsPage:FC = ():JSX.Element => {
-	const state = useSelector((state:IState) => state);
+export const NewsPage: FC = (): JSX.Element => {
+	const state = useSelector((state: IState) => state.news);
 	const { by, time, title, url, kids } = state.post;
 	const { comments } = state;
-
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch({ type: GET_COMMENTS, kids });
+		dispatch(getComments());
 	}, []);
 
 	return (
@@ -43,7 +41,7 @@ export const NewsPage:FC = ():JSX.Element => {
 				<div className="groupButton">
 					<Button
 						className={"updateComments"}
-						updatePosts={() => dispatch({ type: GET_COMMENTS, kids })}
+						onClick={() => dispatch(getComments())}
 						buttonName={"Обновить комментарии"}
 					/>
 					<a href={`${url}`}>
@@ -51,7 +49,7 @@ export const NewsPage:FC = ():JSX.Element => {
 					</a>
 				</div>
 			</div>
-			<Comments items={comments}  />
+			<Comments items={comments} />
 		</S.ContainerNew>
 	);
 };

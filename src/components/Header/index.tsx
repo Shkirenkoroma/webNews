@@ -2,15 +2,15 @@ import icon from "assets/img/logo.png";
 import * as S from "./index.styles.jsx";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { GET_POSTS } from "redux/action/types";
 import Button from "../Button";
 import { FC } from "react";
+import { getPosts } from "redux/reducer/newsSlice";
 
 const Header:FC = ():JSX.Element => {
 	const dispatch = useDispatch();
 
 	const updatePosts = () => {
-		dispatch({ type: GET_POSTS });
+		dispatch(getPosts());
 	};
 	
 	return (
@@ -19,7 +19,7 @@ const Header:FC = ():JSX.Element => {
 				<img src={icon} alt="Перейти на главную" />
 			</Link>
 			<Button
-				updatePosts={()=>updatePosts}
+				onClick={updatePosts}
 				buttonName={"Обновить список новостей"}
 			/>
 		</S.ContainerHeader>

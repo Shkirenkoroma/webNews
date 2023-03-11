@@ -4,7 +4,7 @@ import  { FC } from "react";
 import { IPostsData } from "types";
 
 const Comments: FC<IPostsData> = ({ items }): JSX.Element => {
-	
+
 	return (
 		<S.ContainerComments>
 			{Array.isArray(items) ? (

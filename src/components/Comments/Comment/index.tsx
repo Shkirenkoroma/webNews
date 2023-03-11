@@ -5,7 +5,7 @@ import { ICommentData, IState } from "types";
 import { useSelector } from "react-redux";
 
 const Comment:FC<ICommentData> = ({ item }):JSX.Element => {
-	const errorComments = useSelector((state:IState) => state?.commentError)
+	const errorComments = useSelector((state:IState) => state?.news.commentError)
 	
 	return (
 		<S.ContainerComment>

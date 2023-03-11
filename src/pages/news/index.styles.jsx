@@ -11,32 +11,32 @@ export const ContainerNew = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
-   font-family: 'Permanent Marker', cursive;
-	.content{
+	font-family: "Permanent Marker", cursive;
+	.content {
 		display: flex;
-		justify-content:space-between;
-		width:100%;
+		justify-content: space-between;
+		width: 100%;
 		align-items: center;
 	}
-	.groupTitle{
-display: flex;
-flex-direction: column;
+	.groupTitle {
+		display: flex;
+		flex-direction: column;
 	}
-	.groupButton{
+	.groupButton {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		height: 174px;
-    gap: 45px;
-    margin-right: 60px
+		gap: 45px;
+		margin-right: 60px;
 	}
-	h1{
+	h1 {
 		text-align: center;
-		width:650px;
-		margin:65px auto;
+		width: 650px;
+		margin: 65px auto;
 	}
-	span{
+	span {
 		margin-bottom: 30px;
-		margin-left:60px;
+		margin-left: 60px;
 	}
 `;

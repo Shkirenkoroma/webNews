@@ -2,11 +2,11 @@
  import { FC } from "react";
 import { IButtonProps } from "types";
 
- const Button:FC<IButtonProps> = ({ updatePosts, buttonName, className }):JSX.Element => {
+ const Button:FC<IButtonProps> = ({ onClick, buttonName, className }):JSX.Element => {
     
 	return (
 		<S.ContainerButton>
-			<button className={className} onClick={()=>updatePosts}>{buttonName}</button>
+			<button className={className} onClick={onClick}>{buttonName}</button>
 		</S.ContainerButton>
 	);
 };
