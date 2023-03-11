@@ -1,1 +1,5 @@
-# https://shkirenkoroma.github.io/webNews/
+### Live-версию можно посмотреть по данной ссылке https://shkirenkoroma.github.io/webNews/
+Задание выполнялось с использованием таких технологий как React JS, Redux-Saga, TypeScript, Redux Toolkit, Styled-Components
+![image](https://user-images.githubusercontent.com/61347452/224509849-b12c371d-3481-442c-8f5b-d627c9d6d812.png)
+Дизайн выполнен достаточно ярко и красиво, вся информация загружается посредством запросов с помощью Redux-Saga, далее все отображается на главной странице, маршрутизация по проекту реализована с помощью билблиотеки React-router V.6. По клику на одну из карточек осуществляется переход на нее, в которой можно открывать первоисточник новости и просматривать комментарии, загружаемые также с помощью Redux-Saga. Для стейтменеджмента используется библиотека Redux, а для оптимальной работы взаимодейсвтия actions и Redux - Redux Toolkit
+![image](https://user-images.githubusercontent.com/61347452/224510044-06234c1a-37f4-4adf-afc0-d0806410d1f5.png)
